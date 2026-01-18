@@ -1,1 +1,61 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <title>Lemon Racoon 🍋🦝</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      background: #111;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    input {
+      width: 90%;
+      padding: 12px;
+      border-radius: 8px;
+      border: none;
+      margin-bottom: 12px;
+      font-size: 16px;
+    }
+    button {
+      padding: 12px 20px;
+      border-radius: 8px;
+      border: none;
+      background: #FFD600;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🍋 Lemon Racoon</h2>
+  <p>Cerca un vídeo de YouTube</p>
+
+  <input id="query" placeholder="Nom del vídeo o enllaç" />
+  <br>
+  <button onclick="openVideo()">Obrir a YouTube</button>
+
+  <script>
+    const tg = window.Telegram.WebApp;
+    tg.ready();
+
+    function openVideo() {
+      const q = document.getElementById("query").value.trim();
+      if (!q) return;
+
+      const url = q.startsWith("http")
+        ? q
+        : "https://www.youtube.com/results?search_query=" + encodeURIComponent(q);
+
+      tg.openLink(url);
+    }
+  </script>
+
+</body>
+</html>
 
